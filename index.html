@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction API Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🌊 Flood Prediction API</h1>
+    </header>
+    <main>
+        <section class="api-section">
+            <p>
+                This API provides flood prediction based on location-specific weather data. 
+                It uses machine learning models to process both historical and forecasted data.
+            </p>
+        </section>
+
+        <section class="details-section">
+            <div class="details">
+                
+                <h3> Features of the API</h3>
+                <div class="text">
+                <p> It uses advanced data analysis and <strong>neural networks</strong> to provide very accurate flood risk predictions.
+                    By seamlessly integrating real-time weather forecasts with historical data for the past <strong>23 days</strong> ,
+                    the API thereby ensures that its predictions are on time and informed by current trends. This multi-layered strategy 
+                    encompasses a comprehensive flood-risk analysis while taking into account <strong> rainfall, temperature variability, humidity,
+                    and wind patterns. Moreover, the API predicts up to 7 days</strong> in advance about weather conditions, which often makes
+                    the crucial difference between preparation and precipitation.
+                </p>
+    
+                <p>    Trained on diverse and region-specific Indian meteorological datasets,
+                    this model presently achieves an accuracy rate of almost 97%. This high precision makes it a reliable source
+                     for solving the unique weather challenges that are prevalent in India, especially in flood-prone areas. The API is 
+                     developer-friendly and can be used in different applications, such as weather monitoring platforms and disaster management 
+                     systems. 
+                </p>           
+             </div>
+            </div>
+            <div class="details">
+                <h3> Parameters Explained</h3>
+                <ul class="text">
+                    <p>The API provides a detailed set of parameters for accurate flood prediction-</p>
+
+                  <p><strong>Cloud Coverage:</strong>  The average percentage of the sky covered by clouds. Higher values indicate overcast conditions.</p> 
+                  <p><strong> Humidity:</strong> The average atmospheric moisture level, expressed as a percentage.</p> 
+                  <p><strong>Maximum & Minimum Temperatures:</strong>  The highest and lowest daily temperatures, measured in degrees Celsius.</p>  
+                  <p> <strong>Wind Speed:</strong>  The average wind speed in meters per second, which can influence weather patterns.</p>
+                  <p> <strong>Sunshine Duration:</strong>  Sum total of hours in a day the place gets sunshine, influencing evaporation and conditions.</p>
+                  <p> <strong>Rainfall Sum</strong> : Accumulated millimeter sum of rainfall during the analyzed period.</p>
+                   <strong>Flood Probability:</strong> 
+                   Through this integration, the API returns all weather and flood-prone insights.
+                
+                <p>
+                    All the data is retrieved from a public weather forecast API available at <a href="https://open-meteo.com/">Open-Meteo</a> .By combining these parameters, the API delivers comprehensive insights into weather 
+                    patterns and flood risks.
+                </p>
+            </ul>
+            </div>
+        </section>
+        <section class="sections">
+            <h3>🚀 API Endpoint</h3>
+            <div class="api-box">
+                <div class="long_lat">
+                    <input id="latitude" type="text" class="loc" placeholder="Enter Latitude" oninput="updateApi()">
+                    <input id="longitude" type="text"class="loc" placeholder="Enter Longitude" oninput="updateApi()">
+                </div>
+               <div class="long_lat_url">
+                <input id="api-url" type="text" readonly value="https://flood-api-mbrishabh.onrender.com/weather?latitude=?&longitude=?">
+                <button id="copy-btn">📑</button>
+            </div>
+            </div>
+        </section>
+
+        <section class="limitations-section">
+            <div class="limdiv"><h3> Limitations</h3></div>
+            <ul class="text">
+            <p>
+                Despite its accuracy, the Flood Prediction API has some limitations-
+            </p>
+            
+                
+                   <p> <strong>Hosting Delay:</strong> Since the API is hosted on Render, the first call may take 
+                    up to 50 seconds to fetch data due to server spin-up times.</p>
+                
+               
+                    <p> <strong>Surface Elevation:</strong> The API does not consider ground elevation. For example, areas 
+                    below sea level are more prone to flooding but cannot be evaluated due to data limitations.</p>
+                
+                
+                    <p>  <strong>Data Gaps:</strong> The training dataset lacks specific scenarios, such as ground-level flooding, 
+                    making it challenging to predict certain cases.</p>
+                
+           
+            <p>
+                These are the limitations of the model and areas for improvement and potential integration with more comprehensive datasets in the future.
+            </p>
+        </ul>
+        </section>
+
+        <section class="usage-section">
+            <h3 id="useapi"> How to Use the API</h3>
+            
+        <ol class="text">
+            <p>Follow these steps to integrate the API into your application:</p>
+                Copy the API endpoint using the "Copy URL" button.</li>
+                Make an HTTP GET request with latitude and longitude parameters in the query string.</li>
+                Parse the JSON response, which includes all relevant weather data and flood probabilities.</li>
+            
+            <p>
+                Example response from the API-
+            </p>
+        </ol>
+            <pre>
+{
+    "avg_cloud_coverage": 65,
+    "avg_humidity": 80,
+    "avg_max_temp": 34,
+    "avg_min_temp": 26,
+    "avg_wind_speed": 5.6,
+    "latitude": 20.5,
+    "longitude": 78.96,
+    "sunshine_duration": 8,
+    "total_rain_sum": 12.5,
+    "flood_probability": 0.45
+}
+            </pre>
+            <p>
+                The <strong>flood_probability</strong> parameter ranges from 0 (no flood risk) to 100 
+                (extremely high flood risk). Use this value to make informed decisions.
+            </p>
+            <p>Contact me if you encounter any issues. Email-<strong> rishabhgarai33@gmail.com.</strong></strong></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Flood Prediction API | Created by Rishabh Garai</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
